@@ -15,8 +15,8 @@ Currently, I propose two implementations:
 editor-swingfx
 : uses two different libraries.
 
-    - SwingFX, which allows to write Swing applications using JavaFX properties. Some parts are not very well developped, such as text fields processing, or collections ;
-    - regarding collections, I have used GlazedLists (in a very basic way).
+  - SwingFX, which allows to write Swing applications using JavaFX properties. Some parts are not very well developped, such as text fields processing, or collections ;
+  - regarding collections, I have used GlazedLists (in a very basic way).
 
 editor-jgoodies
 : uses JGoodies Binding. They cover all your need, but are a bit less elegant and modern than SwingFx.
@@ -24,4 +24,6 @@ editor-jgoodies
 ## Overall architecture
 
 Globally, the idea for both projects is the same. Each field, widget or graphical component property (such as activation) is bound to an element in the ViewModel.
+
+
 
