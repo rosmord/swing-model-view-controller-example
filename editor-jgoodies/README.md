@@ -28,3 +28,17 @@ The app displays an editable table of students, which can be filtered. It also d
 
 We use only JGoodies in this example. A pity that you can't find documentation on the web, save on wayback machine.
 
+## Schema
+
+```mermaid
+---
+title: Swing table editor / JGoodies architecture
+---
+classDiagram
+    class StudentCreatorPresenter {
+
+    }
+```
+
+- **TODO** : rename the Presenter classes.
+- **TODO** : follow the same architecture as the SwingFX version.
