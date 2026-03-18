@@ -40,5 +40,20 @@ classDiagram
     }
 ```
 
+```plantuml
+@startuml
+class Test {}
+@enduml
+```
+
 - **TODO** : rename the Presenter classes.
 - **TODO** : follow the same architecture as the SwingFX version.
+
+## Note
+
+To generate UML diagrams for the project, you can simply run:
+
+~~~bash
+./gradlew javadoc
+~~~
+
