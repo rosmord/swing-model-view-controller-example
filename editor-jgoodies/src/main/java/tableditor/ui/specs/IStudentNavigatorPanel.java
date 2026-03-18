@@ -5,6 +5,8 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 
+import tableditor.persistence.facade.dto.PromotionDTO;
+
 public interface IStudentNavigatorPanel {
 
     JFormattedTextField getIdField();
@@ -13,7 +15,7 @@ public interface IStudentNavigatorPanel {
 
     JTextField getLastnameField();
 
-    JComboBox<String> getPromComboBox();
+    JComboBox<PromotionDTO> getPromComboBox();
 
     JFormattedTextField getGradeField();
 

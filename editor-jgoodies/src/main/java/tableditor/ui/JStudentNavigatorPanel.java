@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import net.miginfocom.swing.MigLayout;
+import tableditor.persistence.facade.dto.PromotionDTO;
 import tableditor.ui.specs.IStudentNavigatorPanel;
 import tableditor.ui.utils.SwingPanelDisplayer;
 
@@ -18,7 +19,7 @@ public class JStudentNavigatorPanel extends JPanel implements IStudentNavigatorP
     JFormattedTextField idField = new JFormattedTextField(0);
     JTextField firstnameField = new JTextField(10);
     JTextField lastnameField = new JTextField(10);
-    JComboBox<String> promComboBox = new JComboBox<>();
+    JComboBox<PromotionDTO> promComboBox = new JComboBox<>();
     JFormattedTextField gradeField = new JFormattedTextField(0.0);
     
     JButton updateButton = new JButton("update");
@@ -76,7 +77,7 @@ public class JStudentNavigatorPanel extends JPanel implements IStudentNavigatorP
 
 
     @Override
-    public JComboBox<String> getPromComboBox() {
+    public JComboBox<PromotionDTO> getPromComboBox() {
         return promComboBox;
     }
 

@@ -3,11 +3,10 @@ package tableditor.control.adapters;
 
 
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
-import com.jgoodies.binding.adapter.ListModelBindable;
 
 import tableditor.persistence.facade.dto.StudentDTO;
 
-public class StudentTableAdapter extends AbstractTableAdapter<StudentDTO> implements ListModelBindable {
+public class StudentTableAdapter extends AbstractTableAdapter<StudentDTO>  {
 
     private static final String COLUMNS[] = {
         "ID", "First Name", "Last Name", "Prom", "Grade"

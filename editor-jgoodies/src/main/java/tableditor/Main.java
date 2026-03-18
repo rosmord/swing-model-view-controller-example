@@ -4,24 +4,21 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
-import tableditor.control.StudentBaseController;
 import tableditor.persistence.facade.StudentPersistenceFacade;
 import tableditor.viewmodel.StudentSharedViewModel;
 
 @SpringBootApplication
 public class Main implements CommandLineRunner {
 
-    private StudentPersistenceFacade baseFacade;
-    private StudentBaseController presenter;
+    private StudentUIBuilder uiBuilder;
     
     public Main(StudentPersistenceFacade baseFacade) {
-        this.baseFacade = baseFacade;
-        this.presenter = new StudentBaseController(new StudentSharedViewModel(baseFacade));        
+        this.uiBuilder = new StudentUIBuilder(new StudentSharedViewModel(baseFacade));        
     }
 
     @Override
     public void run(String... args) throws Exception {  
-        presenter.display();
+        uiBuilder.display();
     }
 
     public static void main(String[] args) {
