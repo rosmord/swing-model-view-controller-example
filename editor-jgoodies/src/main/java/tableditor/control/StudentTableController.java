@@ -7,17 +7,17 @@ import com.jgoodies.binding.list.SelectionInList;
 import tableditor.control.adapters.StudentTableAdapter;
 import tableditor.persistence.facade.dto.StudentDTO;
 import tableditor.ui.specs.IStudentTable;
-import tableditor.viewmodel.StudentViewModel;
+import tableditor.viewmodel.StudentTableViewModel;
 
-public class StudentTablePresenter {
-    private StudentViewModel viewModel;
+public class StudentTableController {
+    private StudentTableViewModel viewModel;
     private IStudentTable studentTable;
 
     /**
      * Move to the model !
      */
 
-    public StudentTablePresenter(StudentViewModel viewModel, IStudentTable studentTable) {
+    public StudentTableController(StudentTableViewModel viewModel, IStudentTable studentTable) {
         this.viewModel = viewModel;
         this.studentTable = studentTable;
         activate();

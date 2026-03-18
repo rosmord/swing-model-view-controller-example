@@ -4,6 +4,14 @@ plugins {
 	id 'io.spring.dependency-management' version '1.1.7'
 }
 
+configurations {
+    umlDoclet
+}
+
+dependencies {
+	umlDoclet "nl.talsmasoftware:umldoclet:2.3.0"
+}
+
 group = 'org'
 version = '0.0.1-SNAPSHOT'
 description = 'Demo project for Spring Boot'
@@ -18,7 +26,15 @@ repositories {
 	mavenCentral()
 }
 
+javadoc {
+    source = sourceSets.main.allJava
+    options.docletpath = configurations.umlDoclet.files.asType(List)
+    options.doclet = "nl.talsmasoftware.umldoclet.UMLDoclet"
+    // options.addStringOption "additionalParamName", "additionalParamValue"
+}
+
 dependencies {
+
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-flyway'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
@@ -46,6 +62,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-validation-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'	
 }
+
 
 tasks.named('test') {
 	useJUnitPlatform()

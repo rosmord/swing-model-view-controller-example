@@ -1,23 +1,22 @@
 package tableditor;
 
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
-import tableditor.control.StudentBasePresenter;
+import tableditor.control.StudentBaseController;
 import tableditor.persistence.facade.StudentPersistenceFacade;
-import tableditor.viewmodel.StudentViewModel;
+import tableditor.viewmodel.StudentSharedViewModel;
 
 @SpringBootApplication
 public class Main implements CommandLineRunner {
 
     private StudentPersistenceFacade baseFacade;
-    private StudentBasePresenter presenter;
+    private StudentBaseController presenter;
     
     public Main(StudentPersistenceFacade baseFacade) {
         this.baseFacade = baseFacade;
-        this.presenter = new StudentBasePresenter(new StudentViewModel(baseFacade));        
+        this.presenter = new StudentBaseController(new StudentSharedViewModel(baseFacade));        
     }
 
     @Override

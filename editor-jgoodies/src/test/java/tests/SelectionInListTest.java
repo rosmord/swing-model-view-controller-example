@@ -18,6 +18,7 @@ import com.jgoodies.common.collect.ArrayListModel;
 import tableditor.persistence.facade.dto.StudentDTO;
 
 public class SelectionInListTest {
+    @SuppressWarnings("unchecked")
     @Test
     public void testHolder() {        
         ListModel<StudentDTO> students = new ArrayListModel<StudentDTO>(
