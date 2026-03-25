@@ -30,21 +30,7 @@ We use only JGoodies in this example. A pity that you can't find documentation o
 
 ## Schema
 
-```mermaid
----
-title: Swing table editor / JGoodies architecture
----
-classDiagram
-    class StudentCreatorPresenter {
 
-    }
-```
-
-```plantuml
-@startuml
-class Test {}
-@enduml
-```
 
 - **TODO** : rename the Presenter classes.
 - **TODO** : follow the same architecture as the SwingFX version.

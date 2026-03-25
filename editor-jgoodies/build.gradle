@@ -30,7 +30,7 @@ javadoc {
     source = sourceSets.main.allJava
     options.docletpath = configurations.umlDoclet.files.asType(List)
     options.doclet = "nl.talsmasoftware.umldoclet.UMLDoclet"	
-	options.addStringOption "-create-puml-files"
+	options.addStringOption "-create-puml-files" // Stored in each svg file, as <?plantuml-src?> directive.
 	options.addMultilineStringsOption("-uml-custom-directive").setValue([
 		"skin rose",
 		"hide empty members"
