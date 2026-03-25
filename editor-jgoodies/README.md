@@ -28,6 +28,12 @@ The app displays an editable table of students, which can be filtered. It also d
 
 We use only JGoodies in this example. A pity that you can't find documentation on the web, save on wayback machine.
 
+
+### Relevant design decisions
+
+- all views use the **[Passive View](https://martinfowler.com/eaaDev/PassiveScreen.html)** pattern; basically, they are widgets without behaviour; with getters to access their components;
+- to simplify the use of the views, and hide all `JComponent` related methods which are irrelevant, we have provided interfaces (e.g. `IStudentNavigatorPanel` for `JStudentNavigatorPanel`), which publish only the getters for the subcomponents.
+
 ## Schema
 
 The system provides three different views:
@@ -59,6 +65,14 @@ classDiagram
 		
 		class IStudentNavigatorPanel {
 			<<interface>>
+             getIdField();
+             getFirstnameField();
+             getLastnameField();
+             getPromComboBox();
+             getGradeField();
+             getUpdateButton();
+             getNextButton();
+             getPreviousButton();
 		}
 	}
 
@@ -67,8 +81,25 @@ classDiagram
 	}
 
 	namespace tableditor.viewmodel {
-		class StudentSharedViewModel
-		class StudentNavigatorViewModel
+		class StudentSharedViewModel {
+            students(): ArrayListModel<StudentDTO> 
+            promotions(): ArrayListModel<PromotionDTO>
+        }
+		class StudentNavigatorViewModel {
+            students(): ArrayListModel<StudentDTO> 
+            promotions(): ArrayListModel<PromotionDTO>
+            canNext(): ValueModel
+            canPrevious(): ValueModel
+            canUpdate(): ValueModel
+            id(): ValueModel
+            firstname(): ValueModel
+            lastname(): ValueModel
+            promotion(): ValueModel
+            grade(): ValueModel
+            next()
+            previous()
+            update()
+        }
 	}
 
 	namespace tableditor.viewmodel.adapters {
