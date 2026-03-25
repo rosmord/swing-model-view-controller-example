@@ -1,7 +1,5 @@
 package tableditor.viewmodel;
 
-import java.util.List;
-import java.util.function.Function;
 
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
@@ -37,10 +35,7 @@ public class StudentNavigatorViewModel {
     public StudentNavigatorViewModel(StudentSharedViewModel sharedViewModel) {
         this.sharedViewModel = sharedViewModel;
         loadCurrentStudent();
-        Function<List<ValueModel>, Boolean> canNextFunction = (List<ValueModel> l) -> {
-            int pos = (Integer) position.getValue();
-            return pos < students().size() - 1;
-        };
+        
         canNext = new CanNextValueModel();
         canPrevious = new CanPreviousValueModel();
         students().addListDataListener(new ListDataListener() {

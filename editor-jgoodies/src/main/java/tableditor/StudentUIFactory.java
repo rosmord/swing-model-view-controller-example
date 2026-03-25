@@ -13,7 +13,7 @@ import tableditor.viewmodel.StudentTableViewModel;
 /**
  * Builder for the student UI.
  */
-public class StudentUIBuilder {
+public class StudentUIFactory {
 
     private StudentSharedViewModel sharedViewModel;
     private IStudentBase ui = new JStudentBase();
@@ -21,7 +21,7 @@ public class StudentUIBuilder {
     private StudentCreatorController studentCreatorPresenter;
     private StudentNavigatorController studentNavigatorPresenter;
 
-    public StudentUIBuilder(StudentSharedViewModel studentSharedViewModel) {        
+    public StudentUIFactory(StudentSharedViewModel studentSharedViewModel) {        
         this.sharedViewModel = studentSharedViewModel;
         this.tablePresenter = new StudentTableController(new StudentTableViewModel(studentSharedViewModel), ui.getStudentTable());    
         this.studentCreatorPresenter = new StudentCreatorController(new StudentCreationViewModel(studentSharedViewModel), ui.getStudentCreatorPanel());

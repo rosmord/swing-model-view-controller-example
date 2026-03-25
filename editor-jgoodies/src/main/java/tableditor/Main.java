@@ -10,10 +10,10 @@ import tableditor.viewmodel.StudentSharedViewModel;
 @SpringBootApplication
 public class Main implements CommandLineRunner {
 
-    private StudentUIBuilder uiBuilder;
+    private StudentUIFactory uiBuilder;
     
     public Main(StudentPersistenceFacade baseFacade) {
-        this.uiBuilder = new StudentUIBuilder(new StudentSharedViewModel(baseFacade));        
+        this.uiBuilder = new StudentUIFactory(new StudentSharedViewModel(baseFacade));        
     }
 
     @Override

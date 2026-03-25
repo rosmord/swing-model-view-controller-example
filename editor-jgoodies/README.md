@@ -30,10 +30,114 @@ We use only JGoodies in this example. A pity that you can't find documentation o
 
 ## Schema
 
+The system provides three different views:
+
+- `JStudentTable`, which displays the list of students, and allows to delete them;
+- `JStudentCreatorPanel`, which allows to create new students;
+- `JStudentNavigatorPanel`, which allows to navigate between students, and edit them.
+
+They are grouped in the `JStudentBase` class, which is the main window of the application.
+
+Each of them has its own `ViewModel` and `Controller`.
+
+To give an idea of the architecture, without going into too much detail, here is a partial schema, focusing on the `StudentNavigator` part.
 
 
-- **TODO** : rename the Presenter classes.
-- **TODO** : follow the same architecture as the SwingFX version.
+```mermaid
+---
+Title architecture
+---
+
+classDiagram
+	
+
+	namespace tableditor.control {
+		class StudentNavigatorController
+	}
+
+	namespace tableditor.ui.specs {		
+		
+		class IStudentNavigatorPanel {
+			<<interface>>
+		}
+	}
+
+	namespace tableditor.ui {
+		class JStudentNavigatorPanel
+	}
+
+	namespace tableditor.viewmodel {
+		class StudentSharedViewModel
+		class StudentNavigatorViewModel
+	}
+
+	namespace tableditor.viewmodel.adapters {
+		class AndNotEmptyValueModel
+	}
+
+	namespace tableditor.persistence.facade {
+		class StudentPersistenceFacade
+		class DTOMapper 
+        
+	}
+
+	namespace tableditor.persistence.facade.dto {
+		class StudentDTO {
+			<<record>>
+		}
+		class PromotionDTO {
+			<<record>>
+		}
+	}
+
+	namespace tableditor.persistence.entities {
+		class Student {
+		}
+		class Promotion {
+		}
+	}
+
+	namespace tableditor.persistence.repositories {
+		class StudentRepository {
+			<<interface>>
+		}
+		class PromotionRepository {
+			<<interface>>
+		}
+	}
+
+	
+	
+	IStudentNavigatorPanel <|.. JStudentNavigatorPanel
+
+
+	
+	StudentNavigatorController --> StudentNavigatorViewModel : binds
+	StudentNavigatorController --> IStudentNavigatorPanel : drives
+
+	StudentNavigatorViewModel --> StudentSharedViewModel : shares data
+
+	StudentNavigatorViewModel --> AndNotEmptyValueModel : validates
+	
+	StudentSharedViewModel --> StudentPersistenceFacade : loads from
+	StudentSharedViewModel --> StudentDTO : holds list
+	StudentSharedViewModel --> PromotionDTO : holds list
+
+	StudentPersistenceFacade --> StudentRepository : delegates
+	StudentPersistenceFacade --> PromotionRepository : delegates
+	StudentPersistenceFacade ..> Student : persists
+	StudentPersistenceFacade .. Promotion : reads
+	StudentPersistenceFacade ..> StudentDTO : returns
+	StudentPersistenceFacade ..> PromotionDTO : returns
+	StudentPersistenceFacade ..> DTOMapper : reserved
+
+	StudentRepository ..> Student : manages
+	StudentRepository ..> StudentDTO : projects
+	PromotionRepository ..> Promotion : manages
+	PromotionRepository ..> PromotionDTO : projects
+	
+```
+
 
 ## Note
 
